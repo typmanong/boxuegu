@@ -1,4 +1,4 @@
-define(['jquery','jqueryCookie'],function($,undefined){
+define(['jquery','jqueryCookie','nprogress'],function($,undefined,nprogress){
 	/**
 	 * 展示用户的历史登陆头像：
 	 * 1、获取userInfo这个cookie值
@@ -27,5 +27,6 @@ define(['jquery','jqueryCookie'],function($,undefined){
 			}
 		});
 		return false;
-	})
+	});
+	nprogress.done();
 })
