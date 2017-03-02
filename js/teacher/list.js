@@ -3,24 +3,24 @@ define(['jquery','common','nprogress','template'],function($,undefinde,nprogress
 	nprogress.done();
 	
 	//讲师列表数据缓存
-	var teacherListCache;
-	try{
-		teacherListCache = JSON.parse(localStorage.getItem('teacherListCache'));
-	}catch(e){}
-	//渲染讲师列表
-	if(teacherListCache){//如果有缓存就不用请求ajax
-		var html = template('teacher-list-tpl',{list: teacherListCache});
-			$('#teacher-list-tbody').html(html);
-	}else{//如果没有缓存就发送ajax请求
+//	var teacherListCache;
+//	try{
+//		teacherListCache = JSON.parse(localStorage.getItem('teacherListCache'));
+//	}catch(e){}
+//	//渲染讲师列表
+//	if(teacherListCache){//如果有缓存就不用请求ajax
+//		var html = template('teacher-list-tpl',{list: teacherListCache});
+//			$('#teacher-list-tbody').html(html);
+//	}else{//如果没有缓存就发送ajax请求
 		//渲染讲师列表
 	$.get('/v6/teacher',function(data){
 		if(data.code==200){
-			localStorage.setItem('teacherListCache',JSON.stringify(data.result));
+//			localStorage.setItem('teacherListCache',JSON.stringify(data.result));
 			var html = template('teacher-list-tpl',{list: data.result});
 			$('#teacher-list-tbody').html(html);
 		}
 	});
-	}
+//	}
 	
 	//通过事件委托的方式给动态生成的a标签绑定点击事件
 	//然后获取讲师详细信息并展示
